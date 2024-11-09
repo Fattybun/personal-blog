@@ -34,7 +34,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="w-full py-5 px-40 bg-white shadow-md fixed top-0">
+    <header className="w-full py-5 pt-6 px-40 bg-white fixed top-0 z-50">
       <div className="container mx-auto flex items-center justify-between">
         <div className="text-2xl font-bold text-primary">Bunventures</div>
 
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
             {routes.map((route, index) => (
               <Button
                 variant="link"
-                className="text-gray-600 hover:text-primary"
+                className="text-[#4A5B6B] hover:text-primary"
                 key={index}
                 asChild
               >
