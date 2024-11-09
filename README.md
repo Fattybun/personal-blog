@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bunventures
 
-## Getting Started
+Welcome to **Bunventures**! This is a personal blog built with **React** and
+**ShadCN UI** components. The blog features modern design components, a clean
+layout, and easy navigation.
 
-First, run the development server:
+## Features
+
+- **Responsive Layout**: Optimized for both mobile and desktop views.
+- **ShadCN UI Components**: Utilizes a variety of ShadCN UI components like
+  Buttons, Dropdowns, Avatars, etc., for a consistent design language.
+- **Customizable**: You can easily tweak the components and styles to fit your
+  needs.
+
+## Project Setup
+
+To get started, clone the repository and install the necessary dependencies.
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/bunventures.git
+cd bunventures
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+or if you use yarn:
 
-## Learn More
+```bash
+yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Start the development server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+or with yarn:
 
-## Deploy on Vercel
+```bash
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This will start the development server at http://localhost:3000.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **ShadCN UI**: A collection of ready-to-use components for rapid UI
+  development.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **TypeScript**: JavaScript with static types for better code quality.
+- **Next.js**: React framework for production-ready applications, enabling
+  server-side rendering (SSR).

@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Bunventures",
-  description: "Sharing my life journey",
+  description: "Sharing My Life Journey",
 };
 
 export default function RootLayout({
