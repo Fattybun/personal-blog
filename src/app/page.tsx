@@ -8,20 +8,26 @@ export default function Home() {
     <div
       className={cn(
         "flex",
+        "mt-20",
         "gap-10",
         "relative",
-        "mt-20 px-40",
-        "items-center",
+        "items-center justify-center",
         "bg-slate-100",
-        "h-[calc(100vh_-_132px)] min-h-[590px]"
+        "h-[calc(100vh_-_132px)] min-h-[590px] min-w-[1536px]"
       )}
     >
-      <div className="bg-slate-200/95 w-1/2 absolute left-0 top-0 h-full"></div>
+      <div
+        className={cn(
+          "bg-slate-200/95",
+          "absolute left-0 top-0",
+          "w-1/2 h-full min-h-[590px]"
+        )}
+      ></div>
 
       <div
         className={cn(
           "z-10",
-          "gap-4",
+          "gap-4 ps-5 lg:ps-40",
           "h-full w-1/2",
           "flex flex-col",
           "justify-center"
@@ -58,7 +64,7 @@ export default function Home() {
         width="1920"
         height="1080"
         alt=""
-        className={cn("object-contain", "w-1/2 h-3/4")}
+        className={cn("px-20", "w-1/2 h-3/4", "object-contain")}
       />
     </div>
   );

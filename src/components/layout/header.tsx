@@ -34,9 +34,11 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="w-full py-5 pt-6 px-40 bg-white fixed top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="text-2xl font-bold text-primary">Bunventures</div>
+    <header className="w-full py-5 pt-6 px-5 lg:px-40 bg-white fixed top-0 z-50">
+      <div className="flex items-center justify-between">
+        <Link href="/" className="text-2xl font-bold text-primary">
+          Bunventures
+        </Link>
 
         <div className="flex gap-3 items-center">
           <nav className="flex gap-3">
