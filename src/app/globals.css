@@ -8,58 +8,58 @@ body {
 
 @layer base {
   :root {
-    --background: 210 37% 76%; /* #8EA9E6 - Soft periwinkle blue */
-    --foreground: 210 25% 20%; /* Slate gray for text */
-    --card: 210 37% 76%; /* Matches background */
-    --card-foreground: 210 25% 20%;
-    --popover: 210 37% 76%;
-    --popover-foreground: 210 25% 20%;
-    --primary: 210 30% 55%; /* Soft periwinkle blue */
-    --primary-foreground: 0 0% 98%; /* White for text */
-    --secondary: 210 37% 66%; /* Lighter periwinkle blue */
-    --secondary-foreground: 210 25% 20%; /* Slate gray for contrast */
-    --muted: 210 37% 66%; /* Light periwinkle blue */
-    --muted-foreground: 210 25% 40%; /* Medium slate gray */
-    --accent: 210 37% 66%; /* Soft periwinkle blue accent */
-    --accent-foreground: 210 25% 20%; /* Dark slate gray for text */
-    --destructive: 0 60% 55%; /* Soft red */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 37% 80%; /* Lighter border */
-    --input: 210 37% 80%; /* Lighter input field */
-    --ring: 210 37% 50%; /* Slate ring */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
     --radius: 0.5rem;
-    --chart-1: 220 50% 60%; /* Light blue */
-    --chart-2: 190 60% 50%; /* Light teal */
-    --chart-3: 210 35% 50%; /* Slate */
-    --chart-4: 240 45% 65%; /* Soft blue */
-    --chart-5: 230 55% 60%; /* Pastel aqua */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
   }
 
   .dark {
-    --background: 210 37% 40%; /* Darker periwinkle blue */
-    --foreground: 0 0% 98%; /* Off-white for text */
-    --card: 210 37% 40%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 210 37% 40%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%; /* White for primary */
-    --primary-foreground: 210 30% 55%;
-    --secondary: 210 37% 50%; /* Medium periwinkle blue */
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 210 37% 50%;
-    --muted-foreground: 210 25% 60%; /* Medium slate gray */
-    --accent: 210 37% 50%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 50% 60%; /* Soft red */
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 37% 30%; /* Darker periwinkle blue */
-    --input: 210 37% 30%;
-    --ring: 210 37% 50%;
-    --chart-1: 220 50% 50%; /* Lighter blue */
-    --chart-2: 190 70% 45%; /* Teal */
-    --chart-3: 210 37% 40%; /* Slate */
-    --chart-4: 240 50% 60%; /* Soft blue */
-    --chart-5: 230 60% 55%; /* Pastel aqua */
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 

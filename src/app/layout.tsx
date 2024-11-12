@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+// import Footer from "@/components/layout/footer";
 import Providers from "@/lib/prograss-bar-provider";
 
 const geistSans = localFont({
@@ -34,7 +34,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main>{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
