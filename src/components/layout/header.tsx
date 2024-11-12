@@ -49,7 +49,7 @@ const Header: React.FC = () => {
       )}
     >
       <div className="flex gap-3">
-        <Link href="/" className="text-2xl font-bold text-primary">
+        <Link href="/" className="text-2xl font-bold text-white">
           Bunventures
         </Link>
 
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
           {routes.map((route, index) => (
             <Button
               variant="link"
-              className="text-slate-500 hover:text-primary"
+              className="text-white hover:text-primary"
               key={index}
               asChild
             >
@@ -71,14 +71,14 @@ const Header: React.FC = () => {
         <Input
           type="text"
           placeholder="Search"
-          className="placeholder-white text-primary bg-white/40 "
+          className="!placeholder-white text-white bg-white/40 "
         />
 
         <span
           className={cn(
             "pe-3",
             "absolute inset-y-0 right-0",
-            "flex items-center text-primary"
+            "flex items-center text-white"
           )}
         >
           <Search size={20} />
