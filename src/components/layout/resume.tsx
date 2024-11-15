@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
-import { Phone, Mail, Github } from "lucide-react";
+import { Mail, Github } from "lucide-react";
 import { ReactNode } from "react";
 import { experiences, frameworks, languages, tools } from "@/configs/resume";
 import { Button } from "../ui/button";
@@ -89,11 +89,6 @@ const Resume = () => {
             <Separator className="h-[3px] w-3/4 bg-primary my-2" />
           </div>
           <div className="flex gap-5 pt-2">
-            <ContactItem
-              icon={<Phone size={24} />}
-              label="Phone"
-              value="01110561128"
-            />
             <ContactItem
               icon={<Mail size={24} />}
               label="Email"
