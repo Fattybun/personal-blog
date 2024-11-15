@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -5,30 +7,15 @@ import { route } from "@/configs/route";
 import { MoonStar, Globe, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
+import useScrolled from "@/hooks/use-scrolled";
 
 const Header: React.FC = () => {
-  const routes = [
-    {
-      label: route.home,
-      url: "/",
-    },
-    {
-      label: route.blog,
-      url: "/blog",
-    },
-    {
-      label: route.collaborate,
-      url: "/collaborate",
-    },
-    {
-      label: route.music,
-      url: "/music",
-    },
-    {
-      label: route.about,
-      url: "/about",
-    },
-  ];
+  const isScrolled = useScrolled(50);
+
+  const routes = Object.entries(route).map(([key, label]) => ({
+    label,
+    url: key === "home" ? "/" : `/${label.toLowerCase()}`,
+  }));
 
   const actions = [
     {
@@ -42,14 +29,18 @@ const Header: React.FC = () => {
   return (
     <header
       className={cn(
-        "w-full",
-        "px-10 py-4",
-        "fixed top-0 z-50",
-        "flex items-center justify-between"
+        "w-full px-10 py-4 fixed top-0 z-50 flex items-center justify-between transition-all duration-300",
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
       )}
     >
       <div className="flex gap-3">
-        <Link href="/" className="text-2xl font-bold text-white">
+        <Link
+          href="/"
+          className={cn(
+            "text-2xl font-bold text-primary",
+            isScrolled ? "text-primary" : "text-white"
+          )}
+        >
           Bunventures
         </Link>
 
@@ -57,7 +48,10 @@ const Header: React.FC = () => {
           {routes.map((route, index) => (
             <Button
               variant="link"
-              className="text-white hover:text-primary"
+              className={cn(
+                "hover:text-primary",
+                isScrolled ? "text-primary" : "text-white"
+              )}
               key={index}
               asChild
             >
@@ -71,14 +65,15 @@ const Header: React.FC = () => {
         <Input
           type="text"
           placeholder="Search"
-          className="!placeholder-white text-white bg-white/40 "
+          className={cn(
+            "!placeholder-white text-white bg-white/40",
+            isScrolled && "!placeholder-black text-black bg-gray-100"
+          )}
         />
-
         <span
           className={cn(
-            "pe-3",
-            "absolute inset-y-0 right-0",
-            "flex items-center text-white"
+            "pe-3 absolute inset-y-0 right-0 flex items-center",
+            isScrolled ? "text-black" : "text-white"
           )}
         >
           <Search size={20} />
@@ -89,7 +84,10 @@ const Header: React.FC = () => {
         {actions.map((action, index) => (
           <span
             key={index}
-            className={cn("p-2", "bg-white", "rounded-full", "cursor-pointer")}
+            className={cn(
+              "p-2 rounded-full cursor-pointer",
+              isScrolled ? "bg-gray-100 text-black" : "bg-white text-primary"
+            )}
           >
             {action.icon}
           </span>

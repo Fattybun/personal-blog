@@ -17,12 +17,12 @@ const ContactItem = ({
   label: string;
   value: string;
 }) => (
-  <div className="flex items-center gap-3">
-    <span className="text-gray-600">{icon}</span>
-    <div>
-      <span className="font-medium text-gray-700">{label}</span>
-      <span className="block text-gray-600">{value}</span>
+  <div className="flex flex-col">
+    <div className="flex gap-2">
+      <span className="text-gray-600">{icon}</span>
+      <span className="font-bold text-gray-700 text-sm">{label}</span>
     </div>
+    <span className="block text-gray-600">{value}</span>
   </div>
 );
 
@@ -90,12 +90,12 @@ const Resume = () => {
           </div>
           <div className="flex gap-5 pt-2">
             <ContactItem
-              icon={<Mail size={24} />}
+              icon={<Mail size={18} />}
               label="Email"
               value="jackylau001128@gmail.com"
             />
             <ContactItem
-              icon={<Github size={24} />}
+              icon={<Github size={18} />}
               label="GitHub"
               value="github.com/Fattybun"
             />
