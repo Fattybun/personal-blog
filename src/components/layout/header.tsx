@@ -8,6 +8,7 @@ import { MoonStar, Globe, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import useScrolled from "@/hooks/use-scrolled";
+import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
@@ -27,17 +28,26 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header
+    <motion.header
+      initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
+      animate={{
+        backgroundColor: isScrolled
+          ? "rgba(255, 255, 255, 1)"
+          : "rgba(255, 255, 255, 0)",
+        boxShadow: isScrolled
+          ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+          : "0 0 0 rgba(0, 0, 0, 0)",
+      }}
+      transition={{ duration: 0.3 }}
       className={cn(
-        "w-full px-10 py-4 fixed top-0 z-50 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        "w-full px-10 py-4 fixed top-0 z-50 flex items-center justify-between transition-all duration-300"
       )}
     >
       <div className="flex gap-3">
         <Link
           href="/"
           className={cn(
-            "text-2xl font-bold text-primary",
+            "text-2xl font-bold",
             isScrolled ? "text-primary" : "text-white"
           )}
         >
@@ -93,7 +103,7 @@ const Header: React.FC = () => {
           </span>
         ))}
       </div>
-    </header>
+    </motion.header>
   );
 };
 
