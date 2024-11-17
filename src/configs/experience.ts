@@ -1,34 +1,3 @@
-export const tools = {
-  adobe: "AdobeXD",
-  dingtalk: "DingTalk",
-  figma: "Figma",
-  github: "GitHub",
-  gitlab: "GitLab",
-  jira: "Jira",
-  notion: "Notion",
-  yesdev: "YesDev",
-} as const;
-
-export const languages = {
-  english: "English",
-  korean: "Korean",
-  malay: "Malay",
-  mandarin: "Mandarin",
-} as const;
-
-export const frameworks = {
-  angular: "Angular",
-  apolloclient: "Apollo Client",
-  django: "Django",
-  ionic: "Ionic",
-  nextjs: "Next.js",
-  react: "React",
-  shadcnui: "ShadCN UI",
-  styledcomponents: "Styled-components",
-  tailwindcss: "Tailwind CSS",
-  tanstackrouter: "TanStack Router",
-} as const;
-
 export const experiences = [
   {
     date: "Apr 2024 - current",
