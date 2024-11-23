@@ -9,9 +9,18 @@ import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import useScrolled from "@/hooks/use-scrolled";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
+
+  const url = usePathname();
+
+  const isNestedRoute = (basePath: string) => {
+    return url.startsWith(`/${basePath}/`) && url !== `/${basePath}`;
+  };
+
+  const blogHeaderBackground = isNestedRoute("blog");
 
   const routes = Object.entries(route).map(([key, label]) => ({
     label,
@@ -31,12 +40,14 @@ const Header: React.FC = () => {
     <motion.header
       initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
       animate={{
-        backgroundColor: isScrolled
-          ? "rgba(255, 255, 255, 1)"
-          : "rgba(255, 255, 255, 0)",
-        boxShadow: isScrolled
-          ? "0 4px 6px rgba(0, 0, 0, 0.1)"
-          : "0 0 0 rgba(0, 0, 0, 0)",
+        backgroundColor:
+          isScrolled || blogHeaderBackground
+            ? "rgba(255, 255, 255, 1)"
+            : "rgba(255, 255, 255, 0)",
+        boxShadow:
+          isScrolled || blogHeaderBackground
+            ? "0 4px 6px rgba(0, 0, 0, 0.1)"
+            : "0 0 0 rgba(0, 0, 0, 0)",
       }}
       transition={{ duration: 0.3 }}
       className={cn(
@@ -48,7 +59,7 @@ const Header: React.FC = () => {
           href="/"
           className={cn(
             "text-2xl font-bold",
-            isScrolled ? "text-primary" : "text-white"
+            isScrolled || blogHeaderBackground ? "text-primary" : "text-white"
           )}
         >
           Bunventures
@@ -60,7 +71,9 @@ const Header: React.FC = () => {
               variant="link"
               className={cn(
                 "hover:text-primary",
-                isScrolled ? "text-primary" : "text-white"
+                isScrolled || blogHeaderBackground
+                  ? "text-primary"
+                  : "text-white"
               )}
               key={index}
               asChild
@@ -77,13 +90,14 @@ const Header: React.FC = () => {
           placeholder="Search"
           className={cn(
             "!placeholder-white text-white bg-white/40",
-            isScrolled && "!placeholder-black text-black bg-gray-100"
+            (isScrolled || blogHeaderBackground) &&
+              "!placeholder-black text-black bg-gray-100"
           )}
         />
         <span
           className={cn(
             "pe-3 absolute inset-y-0 right-0 flex items-center",
-            isScrolled ? "text-black" : "text-white"
+            isScrolled || blogHeaderBackground ? "text-black" : "text-white"
           )}
         >
           <Search size={20} />
@@ -96,7 +110,9 @@ const Header: React.FC = () => {
             key={index}
             className={cn(
               "p-2 rounded-full cursor-pointer",
-              isScrolled ? "bg-gray-100 text-black" : "bg-white text-primary"
+              isScrolled || blogHeaderBackground
+                ? "bg-gray-100 text-black"
+                : "bg-white text-primary"
             )}
           >
             {action.icon}
