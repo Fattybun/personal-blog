@@ -28,10 +28,13 @@ const Degital = () => {
           Professional Highlights
         </h1>
 
-        {highlight.map((item) => (
+        {highlight.map((item, index) => (
           <motion.div
-            key={`${item.row}-${item.col}`}
-            className={cn(`col-start-${item.col} row-start-${item.row}`)}
+            key={index}
+            style={{
+              gridColumnStart: item.col,
+              gridRowStart: item.row,
+            }}
             initial={item.initial}
             animate={item.animation}
             transition={item.transition}
@@ -50,7 +53,7 @@ const Degital = () => {
           alt="autumn"
           width={300}
           height={300}
-          className="object-contain col-start-2 row-start-2 row-span-2"
+          className="object-contain row-start-2 row-span-2 col-start-2"
         />
       </section>
 
