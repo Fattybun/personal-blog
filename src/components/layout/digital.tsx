@@ -31,7 +31,7 @@ const Degital = () => {
         {highlight.map((item) => (
           <motion.div
             key={`${item.row}-${item.col}`}
-            className={`col-start-${item.col} row-start-${item.row}`}
+            className={cn(`col-start-${item.col} row-start-${item.row}`)}
             initial={item.initial}
             animate={item.animation}
             transition={item.transition}
