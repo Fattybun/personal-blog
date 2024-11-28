@@ -4,12 +4,13 @@ import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { route } from "@/configs/route";
-import { MoonStar, Globe, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import useScrolled from "@/hooks/use-scrolled";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from "./theme-button";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
@@ -26,15 +27,6 @@ const Header: React.FC = () => {
     label,
     url: key === "home" ? "/" : `/${label.toLowerCase()}`,
   }));
-
-  const actions = [
-    {
-      icon: <MoonStar size={18} />,
-    },
-    {
-      icon: <Globe size={18} />,
-    },
-  ];
 
   return (
     <motion.header
@@ -105,19 +97,24 @@ const Header: React.FC = () => {
       </div>
 
       <div className="flex gap-3">
-        {actions.map((action, index) => (
-          <span
-            key={index}
-            className={cn(
-              "p-2 rounded-full cursor-pointer",
-              isScrolled || blogHeaderBackground
-                ? "bg-gray-100 text-black"
-                : "bg-white text-primary"
-            )}
-          >
-            {action.icon}
-          </span>
-        ))}
+        <ModeToggle
+          styling={cn(
+            isScrolled || blogHeaderBackground
+              ? "bg-gray-100 text-black"
+              : "bg-white text-primary"
+          )}
+        />
+
+        {/* <span
+          className={cn(
+            "p-2 rounded-full cursor-pointer",
+            isScrolled || blogHeaderBackground
+              ? "bg-gray-100 text-black"
+              : "bg-white text-primary"
+          )}
+        >
+          <Globe size={18} />
+        </span> */}
       </div>
     </motion.header>
   );

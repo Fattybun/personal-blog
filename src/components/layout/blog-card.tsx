@@ -38,7 +38,7 @@ const BlogCard = ({ post, className, fromDetail = false }: BlogCardProps) => {
           width={1920}
           height={1080}
           priority
-          className="w-full object-cover h-60 rounded-md transition-transform duration-300 group-hover:scale-105"
+          className="w-full object-fill h-60 rounded-md transition-transform duration-300 group-hover:scale-105"
         />
         {/* Optional overlay */}
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
@@ -58,7 +58,7 @@ const BlogCard = ({ post, className, fromDetail = false }: BlogCardProps) => {
 
         {/* Excerpt */}
         <div
-          className="line-clamp-3 text-justify text-gray-600 dark:text-gray-300"
+          className="line-clamp-3 text-justify"
           dangerouslySetInnerHTML={{ __html: post.excerpt }}
         />
       </div>
