@@ -11,6 +11,7 @@ import useScrolled from "@/hooks/use-scrolled";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./theme-button";
+import CompactMusicPlayer from "./music-button";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
@@ -104,7 +105,13 @@ const Header: React.FC = () => {
               : "bg-white text-primary"
           )}
         />
-
+        <CompactMusicPlayer
+          styling={cn(
+            isScrolled || blogHeaderBackground
+              ? "bg-gray-100 text-black"
+              : "bg-white text-primary"
+          )}
+        />
         {/* <span
           className={cn(
             "p-2 rounded-full cursor-pointer",
