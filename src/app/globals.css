@@ -9,6 +9,7 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%; /* white background */
+    --background-secondary: 0 0% 95%; /* light gray background for secondary */
     --foreground: 30 20% 20%; /* warm dark brown text */
     --card: 30 10% 95%; /* light beige card */
     --card-foreground: 30 20% 20%; /* dark brown text in card */
@@ -36,25 +37,26 @@ body {
   }
 
   .dark {
-    --background: 0 0% 100%; /* white background for dark mode */
-    --foreground: 30 20% 20%; /* dark brown text */
-    --card: 30 10% 95%; /* light beige card */
-    --card-foreground: 30 20% 20%; /* dark brown text in card */
-    --popover: 30 10% 95%; /* light beige popover */
-    --popover-foreground: 30 20% 20%; /* dark brown popover text */
-    --primary: 0 50% 60%; /* rich red */
+    --background: 30 20% 10%; /* deep warm brown background */
+    --background-secondary: 30 15% 15%; /* muted autumn brown for secondary */
+    --foreground: 30 30% 85%; /* light beige text */
+    --card: 30 10% 20%; /* deep autumn card */
+    --card-foreground: 0 0% 98%; /* pale beige text */
+    --popover: 30 10% 25%; /* deep brown popover */
+    --popover-foreground: 0 0% 98%; /* light text on popover */
+    --primary: 0 50% 40%; /* rich autumn red */
     --primary-foreground: 30 10% 95%; /* pale beige text */
-    --secondary: 10 40% 40%; /* muted red */
+    --secondary: 10 40% 30%; /* muted reddish-brown */
     --secondary-foreground: 0 0% 98%; /* light text on secondary */
-    --muted: 30 10% 30%; /* dark brown muted */
+    --muted: 30 10% 20%; /* deep brown muted */
     --muted-foreground: 0 0% 98%; /* light text on muted */
-    --accent: 15 70% 45%; /* deep burnt red */
+    --accent: 15 60% 35%; /* deep burnt red */
     --accent-foreground: 0 0% 98%; /* white text on accent */
-    --destructive: 0 80% 50%; /* autumn red for destructive elements */
+    --destructive: 0 80% 35%; /* deep autumn red for destructive elements */
     --destructive-foreground: 0 0% 98%; /* white destructive text */
-    --border: 30 15% 80%; /* light brown border */
-    --input: 30 10% 85%; /* light brown input fields */
-    --ring: 30 30% 50%; /* medium brown ring */
+    --border: 30 10% 25%; /* muted brown border */
+    --input: 30 10% 30%; /* muted brown input fields */
+    --ring: 30 20% 40%; /* autumn brown ring */
     --radius: 0.5rem;
     --chart-1: 30 75% 50%; /* burnt orange */
     --chart-2: 10 60% 45%; /* autumn leaf green */

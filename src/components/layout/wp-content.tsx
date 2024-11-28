@@ -25,25 +25,25 @@ const ContentRenderer = ({ content }: ContentRendererProps) => {
         // Headings
         case "h1":
           return (
-            <h1 className="text-4xl font-bold my-6">
+            <h1 className="text-4xl font-bold my-6 text-primary">
               {domToReact(domNode.children as DOMNode[], options)}
             </h1>
           );
         case "h2":
           return (
-            <h2 className="text-3xl font-bold my-5">
+            <h2 className="text-3xl font-bold my-5 text-primary">
               {domToReact(domNode.children as DOMNode[], options)}
             </h2>
           );
         case "h3":
           return (
-            <h3 className="text-2xl font-bold my-4">
+            <h3 className="text-2xl font-bold my-4 text-primary">
               {domToReact(domNode.children as DOMNode[], options)}
             </h3>
           );
         case "h4":
           return (
-            <h4 className="text-xl font-bold my-3">
+            <h4 className="text-xl font-bold my-3 text-primary">
               {domToReact(domNode.children as DOMNode[], options)}
             </h4>
           );
@@ -51,7 +51,7 @@ const ContentRenderer = ({ content }: ContentRendererProps) => {
         // Paragraphs
         case "p":
           return (
-            <p className="my-4 leading-relaxed text-gray-800">
+            <p className="my-4 leading-relaxed">
               {domToReact(domNode.children as DOMNode[], options)}
             </p>
           );
@@ -79,7 +79,7 @@ const ContentRenderer = ({ content }: ContentRendererProps) => {
         // Blockquote
         case "blockquote":
           return (
-            <blockquote className="border-l-4 border-primary pl-4 my-4 italic text-gray-700">
+            <blockquote className="border-l-4 border-primary pl-4 my-4 italic ">
               {domToReact(domNode.children as DOMNode[], options)}
             </blockquote>
           );
@@ -130,7 +130,7 @@ const ContentRenderer = ({ content }: ContentRendererProps) => {
                 loading="lazy"
               />
               {domNode.attribs.alt && (
-                <p className="text-sm text-gray-600 mt-2 text-center">
+                <p className="text-sm mt-2 text-center">
                   {domNode.attribs.alt}
                 </p>
               )}

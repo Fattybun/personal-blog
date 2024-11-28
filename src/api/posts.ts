@@ -29,7 +29,7 @@ const fetchAllPosts = async (): Promise<WordPressPost[] | null> => {
     "https://public-api.wordpress.com/rest/v1.1/sites/fattybunblog.wordpress.com/posts";
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
