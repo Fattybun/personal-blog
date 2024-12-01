@@ -1,14 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Music, Play, Pause, Volume2, Volume1, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const musicList: string[] = [
-  "/mp3/gift.mp3",
-  "/mp3/and-the-end.mp3",
-  "/mp3/because-of-you.mp3",
-  "/mp3/a-day.mp3",
-  "/mp3/is-it-me.mp3",
-];
+import { playlist } from "@/configs/playlist";
 
 type MusicPlayerProps = {
   styling?: string;
@@ -32,7 +25,7 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
     };
 
     const handleSongEnd = () => {
-      const nextIndex = (currentTrackIndex + 1) % musicList.length;
+      const nextIndex = (currentTrackIndex + 1) % playlist.length;
       setCurrentTrackIndex(nextIndex);
       if (isPlaying) audio.play();
     };
@@ -131,7 +124,7 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
         onClick={togglePlay}
       />
 
-      <audio ref={audioRef} src={musicList[currentTrackIndex]} />
+      <audio ref={audioRef} src={playlist[currentTrackIndex]} />
     </div>
   );
 };

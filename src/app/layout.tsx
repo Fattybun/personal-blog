@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/layout/header";
-// import Footer from "@/components/layout/footer";
+import Footer from "@/components/layout/footer";
 import Providers from "@/lib/prograss-bar-provider";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-
-export const metadata: Metadata = {
-  title: "Bunventures",
-  description: "Sharing My Life Journey",
-};
 
 export default function RootLayout({
   children,
@@ -17,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body className="antialiased flex flex-col min-h-screen">
         <Providers>
           <ThemeProvider
             attribute="class"
@@ -27,9 +21,9 @@ export default function RootLayout({
           >
             <Header />
 
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
 
-            {/* <Footer /> */}
+            <Footer />
           </ThemeProvider>
         </Providers>
       </body>
