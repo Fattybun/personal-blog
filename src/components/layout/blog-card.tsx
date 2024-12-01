@@ -15,6 +15,7 @@ type BlogCardProps = {
 const BlogCard = ({ post, className, fromDetail = false }: BlogCardProps) => {
   return (
     <Link
+      target="_blank"
       href={cn(fromDetail ? `${post.ID}` : `blog/${post.ID}`)}
       className={`flex flex-col gap-4 rounded-lg cursor-pointer relative group transition-transform duration-200 hover:-translate-y-1 ${className}`}
     >
