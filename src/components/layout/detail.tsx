@@ -31,18 +31,23 @@ const BlogDetail = ({ post, posts }: BlogDetailProps) => {
   ];
 
   return (
-    <div className="h-screen px-10 py-24 flex flex-col gap-5 ">
+    <div className="min-h-screen px-4 md:px-10 py-12 pt-24 md:py-24 flex flex-col gap-5">
+      {/* Breadcrumb */}
       <DynamicBreadcrumb homeLabel="Home" items={breadcrumbItems} />
-      <div className="flex gap-5 relative">
-        <div className="flex flex-col gap-5 w-3/4">
-          <h2 className="font-bold text-4xl">{post.title}</h2>
+
+      {/* Main Content */}
+      <div className="flex flex-col lg:flex-row gap-5 relative">
+        {/* Blog Post Content */}
+        <div className="flex flex-col gap-5 w-full lg:w-3/4">
+          <h2 className="font-bold text-2xl md:text-4xl">{post.title}</h2>
 
           <ContentRenderer content={post.content}></ContentRenderer>
         </div>
 
-        <div className="w-1/4 px-5">
-          <div className="flex flex-col gap-4 sticky top-24">
-            <h6 className="font-bold">Recent Posts</h6>
+        {/* Recent Posts Sidebar */}
+        <div className="w-full lg:w-1/4 px-0 lg:px-5">
+          <div className="flex flex-col gap-4 lg:sticky lg:top-24">
+            <h6 className="font-bold text-lg">Recent Posts</h6>
 
             {/* Limit the posts to a maximum of 3 */}
             {posts

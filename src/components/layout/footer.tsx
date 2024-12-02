@@ -20,9 +20,9 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="w-full py-4 lg:px-10 bg-primary text-[#F1F6FC]">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-        <div className="text-center lg:text-left text-sm">
+    <footer className="w-full py-4 md:px-10 bg-primary text-[#F1F6FC]">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-center md:text-left text-sm">
           © {new Date().getFullYear()} Bunventures Blog. All rights reserved.
         </div>
 

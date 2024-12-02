@@ -12,10 +12,10 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./theme-button";
 import CompactMusicPlayer from "./music-button";
+import MenuToggle from "./mobile-menu";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
-
   const url = usePathname();
 
   const isNestedRoute = (basePath: string) => {
@@ -44,21 +44,22 @@ const Header: React.FC = () => {
       }}
       transition={{ duration: 0.3 }}
       className={cn(
-        "w-full px-10 py-4 fixed top-0 z-50 flex items-center justify-between transition-all duration-300"
+        "w-full px-4 md:px-10 py-4 fixed top-0 z-50 flex items-center justify-between transition-all duration-300"
       )}
     >
-      <div className="flex gap-3">
+      <div className="flex items-center gap-3">
         <Link
           href="/"
           className={cn(
-            "text-2xl font-bold",
+            "text-xl md:text-2xl font-bold",
             isScrolled || blogHeaderBackground ? "text-primary" : "text-white"
           )}
         >
           Bunventures
         </Link>
 
-        <nav className="flex gap-3">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex gap-3">
           {routes.map((route, index) => (
             <Button
               variant="link"
@@ -77,7 +78,8 @@ const Header: React.FC = () => {
         </nav>
       </div>
 
-      <div className="relative min-w-60">
+      {/* Search Bar */}
+      <div className="hidden md:flex relative min-w-60">
         <Input
           type="text"
           placeholder="Search"
@@ -97,7 +99,8 @@ const Header: React.FC = () => {
         </span>
       </div>
 
-      <div className="flex gap-3">
+      {/* Right Buttons */}
+      <div className="hidden md:flex gap-3">
         <ModeToggle
           styling={cn(
             isScrolled || blogHeaderBackground
@@ -112,17 +115,9 @@ const Header: React.FC = () => {
               : "bg-white text-primary"
           )}
         />
-        {/* <span
-          className={cn(
-            "p-2 rounded-full cursor-pointer",
-            isScrolled || blogHeaderBackground
-              ? "bg-gray-100 text-black"
-              : "bg-white text-primary"
-          )}
-        >
-          <Globe size={18} />
-        </span> */}
       </div>
+
+      <MenuToggle />
     </motion.header>
   );
 };

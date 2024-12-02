@@ -5,7 +5,10 @@ import Resume from "./resume";
 
 const AboutMe = () => {
   return (
-    <Tabs defaultValue="aboutme" className="p-10 min-h-screen">
+    <Tabs
+      defaultValue="aboutme"
+      className="px-6 py-10 min-h-screen place-items-center"
+    >
       <TabsList>
         <TabsTrigger value="aboutme">About Me</TabsTrigger>
         <TabsTrigger value="resume">Resume</TabsTrigger>
