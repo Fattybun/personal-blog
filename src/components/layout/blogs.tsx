@@ -10,13 +10,15 @@ const Blogs = async () => {
   }
 
   return (
-    <div className="h-screen p-10">
+    <div className="min-h-screen p-4 md:p-10">
+      {/* Breadcrumb Section */}
       <DynamicBreadcrumb
         homeLabel="Home"
         items={[{ label: "Blog", href: "/blog" }]}
       />
 
-      <div className="grid grid-cols-3 gap-8 py-12">
+      {/* Blog Posts Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 py-8 md:py-12">
         {posts.map((post) => (
           <BlogCard key={post.ID} post={post} />
         ))}
