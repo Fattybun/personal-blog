@@ -2,33 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Separator } from "../ui/separator";
-import { Mail, Github } from "lucide-react";
 import { ReactNode } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import Image from "next/image";
-import { tools } from "@/configs/tool";
-import { languages } from "@/configs/language";
-import { frameworks } from "@/configs/framework";
 import { experiences } from "@/configs/experience";
-
-const ContactItem = ({
-  icon,
-  label,
-  value,
-}: {
-  icon: ReactNode;
-  label: string;
-  value: string;
-}) => (
-  <div className="flex flex-col">
-    <div className="flex gap-2 items-center">
-      <span className="text-gray-600">{icon}</span>
-      <span className="font-bold text-gray-700 text-sm">{label}</span>
-    </div>
-    <span className="block text-gray-600">{value}</span>
-  </div>
-);
+import { technical_skills } from "@/configs/skills";
+import { achievements } from "@/configs/achievement";
 
 const Section = ({
   title,
@@ -37,8 +16,8 @@ const Section = ({
   title: string;
   children: ReactNode;
 }) => (
-  <section className="mb-8">
-    <h6 className="text-lg font-semibold text-gray-700">{title}</h6>
+  <section className="mb-2">
+    <h6 className="text-lg text-center font-semibold text-gray-700">{title}</h6>
     <div className="flex">
       <Separator className="h-[3px] w-1/4 bg-gray-200 my-2" />
       <Separator className="h-[3px] w-3/4 bg-primary my-2" />
@@ -49,12 +28,8 @@ const Section = ({
 
 const Resume = () => {
   const experience = Object.values(experiences);
-
-  const skills = {
-    Frameworks: Object.values(frameworks),
-    Tools: Object.values(tools),
-    Language: Object.values(languages),
-  };
+  const skills = Object.values(technical_skills);
+  const achievement = Object.values(achievements);
 
   return (
     <div className="flex flex-col gap-4 items-end w-full relative text-sm">
@@ -82,104 +57,87 @@ const Resume = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="container mx-auto my-10 p-4 md:p-8 max-w-[21cm] bg-white shadow-lg border border-gray-300"
       >
-        <h1 className="mt-8 font-extrabold text-xl md:text-3xl text-gray-800">
+        <h1 className="mt-8 font-extrabold text-xl md:text-3xl text-center text-gray-800">
           Jacky Lau Chong Bao
         </h1>
-        <div className="text-lg md:text-xl text-gray-600 mb-6">
+        <div className="text-lg md:text-xl text-center text-gray-600">
           Frontend Developer
         </div>
-
-        <div className="mb-8">
-          <div className="flex">
-            <Separator className="h-[3px] w-1/4 bg-gray-200 my-2" />
-            <Separator className="h-[3px] w-3/4 bg-primary my-2" />
-          </div>
-          <div className="flex flex-col md:flex-row gap-5 pt-2">
-            <ContactItem
-              icon={<Mail size={18} />}
-              label="Email"
-              value="jackylau001128@gmail.com"
-            />
-            <ContactItem
-              icon={<Github size={18} />}
-              label="GitHub"
-              value="github.com/Fattybun"
-            />
-          </div>
+        <div className="text-md md:text-md text-center text-gray-600 mb-6">
+          +60 11-1056 1128 • jackylau001128@gmail.com • Kuala Lumpur
         </div>
 
-        <div className="flex flex-col md:flex-row gap-5 mb-8">
-          <div className="w-full md:w-1/5">
-            <h6 className="text-lg font-semibold text-gray-700">Address</h6>
-            <span className="text-gray-600">Kuala Lumpur</span>
-          </div>
-          <div className="w-full md:w-4/5">
-            <h6 className="text-lg font-semibold text-gray-700">Profile</h6>
-            <p className="text-gray-600 leading-relaxed">
-              Passionate and detail-oriented Frontend Developer with over a year
-              of experience building responsive web applications. Skilled in
-              Next.js, Angular, and Ionic, with expertise in modular design and
-              maintainability. Known for delivering polished UI/UX and
-              leveraging structured approaches to solve complex challenges.
-            </p>
-          </div>
-        </div>
+        <Section title="Summary">
+          <p className="text-justify text-gray-600">
+            Adept Frontend Developer with expertise in Next.js, Angular, and
+            Tailwind CSS. Skilled in optimizing frontend performance, crafting
+            user-centricinterfaces, and collaborating effectively on team
+            projects to deliver high-quality results.
+          </p>
+        </Section>
 
-        <Section title="Work Experience">
-          {experience.map(({ date, title, company, tasks }, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-4 mb-6">
-              <span className="font-semibold text-gray-700 w-full md:w-1/5">
-                {date}
-              </span>
-              <div className="w-full md:w-4/5">
-                <h6 className="font-semibold text-gray-800">{title}</h6>
-                <span className="text-gray-600">{company}</span>
-                <ul className="list-disc list-inside text-gray-600 mt-2 space-y-2">
-                  {tasks.map((task, i) => (
-                    <li key={i}>{task}</li>
+        <Section title="Key Achievements">
+          <ul className="text-justify list-disc ms-4 text-gray-600">
+            {achievement.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </Section>
+
+        <Section title="Experiences">
+          {experience.map(
+            ({ date, title, company, location, tasks }, index) => (
+              <div key={index} className="w-full mb-2">
+                <div className="grid grid-cols-2">
+                  <div className="flex flex-col">
+                    <h6 className="font-semibold text-gray-800">{company}</h6>
+                    <span className="text-gray-600">{title}</span>
+                  </div>
+
+                  <div className="flex flex-col text-end">
+                    <span className="text-gray-600">{location}</span>
+                    <span className="text-gray-600">{date}</span>
+                  </div>
+                </div>
+
+                <ul className="list-disc ms-4 text-gray-600 mt-2 text-justify">
+                  {tasks.map((task, index) => (
+                    <li key={index}>{task}</li>
                   ))}
                 </ul>
               </div>
-            </div>
-          ))}
-        </Section>
-
-        <Section title="Education">
-          <div className="flex flex-col">
-            <h6 className="font-semibold text-gray-800">
-              Multimedia University (MMU)
-            </h6>
-            <span className="text-gray-600">
-              Bachelor of Computer Science in Artificial Intelligence, 2021 -
-              2023
-            </span>
-            <span className="text-gray-600">CGPA: 3.74</span>
-          </div>
+            )
+          )}
         </Section>
 
         <Section title="Skills">
-          <div className="flex flex-wrap gap-4">
-            {Object.entries(skills).map(([category, items], index) => (
-              <div key={index} className="flex flex-col gap-2 w-full md:w-1/4">
-                <h6 className="font-semibold text-gray-800">{category}</h6>
-                <ul className="text-gray-600 space-y-1 grid grid-cols-2 md:grid-cols-1">
-                  {items.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+          <div className="flex flex-col text-gray-600">
+            {skills.map((uiux, index) => (
+              <ul key={index} className="list-disc ms-4">
+                <li>{uiux}</li>
+              </ul>
             ))}
           </div>
         </Section>
-      </motion.div>
 
-      <Image
-        src="/autumn-book.png"
-        alt="autumn-book"
-        width={150}
-        height={150}
-        className="absolute right-0 bottom-0 hidden md:block"
-      />
+        <Section title="Education">
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col">
+              <h6 className="font-semibold text-gray-800">
+                Multimedia University (MMU)
+              </h6>
+              <span className="text-gray-600">
+                Bachelor of Computer Science in Artificial Intelligence
+              </span>
+            </div>
+
+            <div className="flex flex-col text-end text-gray-600">
+              <span>Melaka</span>
+              <span>July 2019 - July 2023</span>
+            </div>
+          </div>
+        </Section>
+      </motion.div>
     </div>
   );
 };

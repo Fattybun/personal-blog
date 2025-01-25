@@ -37,8 +37,9 @@ export default function Landing({
 
       {/* Background Image */}
       <Image
+        priority
         src={backgroundImage}
-        alt=""
+        alt="landing_atumn"
         width={1080}
         height={1920}
         className="object-cover w-full h-screen"
@@ -80,14 +81,14 @@ export default function Landing({
           transition={{ duration: 1 }} // Adjust duration for fade effect
           className="flex flex-col items-end text-right w-full mt-6 md:mt-0 md:w-1/3 space-y-2 min-h-20"
         >
-          <motion.span
+          <motion.blockquote
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }} // Adjust delay for effect
             className="italic text-sm md:text-lg leading-relaxed max-w-xs"
           >
             {`"${currentQuote.quote}"`}
-          </motion.span>
+          </motion.blockquote>
           <motion.span
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}

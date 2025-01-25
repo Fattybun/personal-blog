@@ -2,13 +2,12 @@
 
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
+const ProgressBarProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {children}
       <ProgressBar
         height="2px"
-        color="#6B8CAF"
         options={{ showSpinner: false }}
         shallowRouting
       />
@@ -16,4 +15,4 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Providers;
+export default ProgressBarProvider;
