@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import Providers from "@/lib/prograss-bar-provider";
+import ProgressBarProvider from "@/lib/prograss-bar-provider";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 
 export default function RootLayout({
@@ -10,12 +10,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased flex flex-col min-h-screen">
-        <Providers>
+        <ProgressBarProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
@@ -25,7 +25,7 @@ export default function RootLayout({
 
             <Footer />
           </ThemeProvider>
-        </Providers>
+        </ProgressBarProvider>
       </body>
     </html>
   );

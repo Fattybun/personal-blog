@@ -10,8 +10,8 @@ export const philosophy = [
       "When time’s tight, speed takes priority over perfection. Results come first, and technical debt can be addressed later.",
   },
   {
-    title: "Work-Life Balance",
+    title: "Life Rhythm",
     description:
-      "I separate work from personal life, ensuring I stay refreshed and focused for the next challenge.",
+      "I excel at life management, maintaining clarity between work and personal life to stay energized and ready for new challenges.",
   },
 ];
