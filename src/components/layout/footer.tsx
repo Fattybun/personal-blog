@@ -9,10 +9,10 @@ import { usePathname } from "next/navigation"; // Import useRouter
 const Footer: React.FC = () => {
   const pathname = usePathname(); // Use the router to get current path
 
-  const social_media = [
-    { url: media.instagram, icon: <Instagram className="w-5 h-5" /> },
-    { url: media.github, icon: <Github className="w-5 h-5" /> },
-    { url: media.linkedin, icon: <Linkedin className="w-5 h-5" /> },
+  const socialMedia = [
+    { url: media.instagram, icon: <Instagram className="w-5 h-5" />, label: "Instagram" },
+    { url: media.github, icon: <Github className="w-5 h-5" />, label: "GitHub" },
+    { url: media.linkedin, icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" },
   ];
 
   if (pathname === "/") {
@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex gap-4">
-          {social_media.map((media, index) => (
-            <Link key={index} href={media.url} target="_blank">
+          {socialMedia.map((media) => (
+            <Link key={media.url} href={media.url} target="_blank" aria-label={media.label}>
               {media.icon}
             </Link>
           ))}

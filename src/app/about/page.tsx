@@ -1,5 +1,5 @@
-import Landing from "@/components/layout/landing";
-import AboutMe from "@/components/layout/about";
+import Landing from "@/components/landing/Landing";
+import AboutMe from "@/components/about/About";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

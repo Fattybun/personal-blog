@@ -21,12 +21,16 @@ export default function Landing({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Select a random quote
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      setCurrentQuote(randomQuote);
+      // Select a random quote different from the current one
+      setCurrentQuote((prev) => {
+        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        while (randomQuote.quote === prev.quote && quotes.length > 1) {
+          randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+        return randomQuote;
+      });
     }, 7500); // 7.5 seconds
 
-    // Clear interval on component unmount
     return () => clearInterval(interval);
   }, []);
 
@@ -39,7 +43,7 @@ export default function Landing({
       <Image
         priority
         src={backgroundImage}
-        alt="landing_atumn"
+        alt="Landing background image"
         width={1080}
         height={1920}
         className="object-cover w-full h-screen"
@@ -73,31 +77,32 @@ export default function Landing({
         </motion.div>
 
         {/* Quote Section */}
-        <motion.div
-          key={currentQuote.quote} // Ensures animations run on each quote change
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }} // Adjust duration for fade effect
-          className="flex flex-col items-end text-right w-full mt-6 md:mt-0 md:w-1/3 space-y-2 min-h-20"
-        >
-          <motion.blockquote
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }} // Adjust delay for effect
-            className="italic text-sm md:text-lg leading-relaxed max-w-xs"
+          <motion.div
+            key={currentQuote.quote}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="flex flex-col items-end text-right w-full mt-6 md:mt-0 md:w-1/3 space-y-2 min-h-20"
+            aria-live="polite"
           >
-            {`"${currentQuote.quote}"`}
-          </motion.blockquote>
-          <motion.span
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.4 }} // Adjust delay for effect
-            className="text-xs md:text-sm text-gray-300"
-          >
-            — {currentQuote.author}
-          </motion.span>
-        </motion.div>
+            <motion.blockquote
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="italic text-sm md:text-lg leading-relaxed max-w-xs"
+            >
+              {`"${currentQuote.quote}"`}
+            </motion.blockquote>
+            <motion.span
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="text-xs md:text-sm text-gray-300"
+            >
+              — {currentQuote.author}
+            </motion.span>
+          </motion.div>
       </div>
     </div>
   );

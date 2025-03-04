@@ -1,4 +1,3 @@
-// components/blog/BlogCard.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +15,7 @@ const BlogCard = ({ post, className, fromDetail = false }: BlogCardProps) => {
   return (
     <Link
       target="_blank"
+      rel="noopener noreferrer" // Security improvement for external links
       href={cn(fromDetail ? `${post.ID}` : `blog/${post.ID}`)}
       className={`flex flex-col gap-4 rounded-lg cursor-pointer relative group transition-transform duration-200 hover:-translate-y-1 ${className}`}
     >

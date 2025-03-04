@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { route } from "@/configs/route";
@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 import useScrolled from "@/hooks/use-scrolled";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { ModeToggle } from "./theme-button";
-import CompactMusicPlayer from "./music-button";
-import MenuToggle from "./mobile-menu";
+import { ModeToggle } from "../theme/ThemeButton";
+import CompactMusicPlayer from "../music/MusicButton";
+import MenuToggle from "./MobileMenu";
 
 const Header: React.FC = () => {
   const isScrolled = useScrolled(50);
@@ -24,10 +24,14 @@ const Header: React.FC = () => {
 
   const blogHeaderBackground = isNestedRoute("blog");
 
-  const routes = Object.entries(route).map(([key, label]) => ({
-    label,
-    url: key === "home" ? "/" : `/${label.toLowerCase()}`,
-  }));
+  const routes = useMemo(
+    () =>
+      Object.entries(route).map(([key, label]) => ({
+        label,
+        url: key === "home" ? "/" : `/${label.toLowerCase()}`,
+      })),
+    []
+  );
 
   return (
     <motion.header
@@ -60,19 +64,19 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-3">
-          {routes.map((route, index) => (
+          {routes.map((r) => (
             <Button
               variant="link"
+              key={r.url}
               className={cn(
                 "hover:text-primary",
                 isScrolled || blogHeaderBackground
                   ? "text-primary"
                   : "text-white"
               )}
-              key={index}
               asChild
             >
-              <Link href={route.url}>{route.label}</Link>
+              <Link href={r.url}>{r.label}</Link>
             </Button>
           ))}
         </nav>
@@ -83,6 +87,7 @@ const Header: React.FC = () => {
         <Input
           type="text"
           placeholder="Search"
+          aria-label="Search"
           className={cn(
             "!placeholder-white text-white bg-white/40",
             (isScrolled || blogHeaderBackground) &&
@@ -117,6 +122,7 @@ const Header: React.FC = () => {
         />
       </div>
 
+      {/* Mobile Menu */}
       <MenuToggle />
     </motion.header>
   );

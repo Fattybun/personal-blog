@@ -24,22 +24,33 @@ export type WordPressPost = {
   url: string;
 };
 
+const BASE_URL = "https://public-api.wordpress.com/rest/v1.1/sites/fattybunblog.wordpress.com/posts";
+
 const fetchAllPosts = async (): Promise<WordPressPost[] | null> => {
-  const url =
-    "https://public-api.wordpress.com/rest/v1.1/sites/fattybunblog.wordpress.com/posts";
+  const url = BASE_URL; // Using a constant for the base URL
 
   try {
     const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
-      throw new Error("Failed to fetch posts");
+      console.error(`Failed to fetch posts. Status: ${response.status}`);
+      return null;
     }
 
     const data = await response.json();
 
-    return data.posts;
+    // Verify that data.posts is an array
+    if (Array.isArray(data.posts)) {
+      return data.posts;
+    } else {
+      console.error("Unexpected data format: posts is not an array", data);
+      return null;
+    }
   } catch (error) {
-    console.error("Error fetching posts:", error);
-
+    if (error instanceof Error) {
+      console.error("Error fetching posts:", error.message);
+    } else {
+      console.error("Unknown error fetching posts:", error);
+    }
     return null;
   }
 };

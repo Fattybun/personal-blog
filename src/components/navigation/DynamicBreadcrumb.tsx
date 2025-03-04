@@ -1,4 +1,3 @@
-// components/ui/dynamic-breadcrumb.tsx
 "use client";
 
 import { useMemo } from "react";
@@ -11,7 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 
-type BreadcrumbItem = {
+type BreadcrumbItemData = {
   label: string;
   href: string;
   isCurrentPage?: boolean;
@@ -19,8 +18,7 @@ type BreadcrumbItem = {
 
 type DynamicBreadcrumbProps = {
   homeLabel?: string;
-  customLabels?: Record<string, string>;
-  currentPageLabel?: string;
+  // customLabels and currentPageLabel can be implemented if needed
   items?: Array<{
     label: string;
     href: string;
@@ -33,7 +31,7 @@ const DynamicBreadcrumb = ({
 }: DynamicBreadcrumbProps) => {
   const breadcrumbItems = useMemo(() => {
     // Start with home
-    const defaultItems: BreadcrumbItem[] = [{ label: homeLabel, href: "/" }];
+    const defaultItems: BreadcrumbItemData[] = [{ label: homeLabel, href: "/" }];
 
     // Add custom items
     items.forEach((item, index) => {

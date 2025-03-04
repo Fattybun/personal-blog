@@ -1,5 +1,5 @@
-import Blogs from "@/components/layout/blogs";
-import Landing from "@/components/layout/landing";
+import Blogs from "@/components/blog/Blogs";
+import Landing from "@/components/landing/Landing";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

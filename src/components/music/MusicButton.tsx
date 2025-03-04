@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { Music, Play, Pause, Volume2, Volume1, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,19 +17,34 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // 确保音量与 audio 元素同步
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const updateProgress = () => {
-      const progressPercent = (audio.currentTime / audio.duration) * 100;
-      setProgress(progressPercent);
+      if (audio.duration) {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        setProgress(progressPercent);
+      }
     };
 
     const handleSongEnd = () => {
       const nextIndex = (currentTrackIndex + 1) % playlist.length;
       setCurrentTrackIndex(nextIndex);
-      if (isPlaying) audio.play();
+      setProgress(0);
+      if (isPlaying) {
+        // 等待 src 更新后再播放
+        setTimeout(() => {
+          audio.play().catch((error) => console.error("Playback failed", error));
+        }, 100);
+      }
     };
 
     audio.addEventListener("timeupdate", updateProgress);
@@ -40,13 +57,12 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
   }, [currentTrackIndex, isPlaying]);
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
     if (isPlaying) {
-      audioRef.current.pause();
+      audio.pause();
     } else {
-      audioRef.current.play().catch((error) => {
-        console.error("Playback failed", error);
-      });
+      audio.play().catch((error) => console.error("Playback failed", error));
     }
     setIsPlaying((prev) => !prev);
   };
@@ -54,21 +70,20 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-    if (audioRef.current) audioRef.current.volume = newVolume;
   };
 
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const manualChange = parseFloat(e.target.value);
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !audio.duration) return;
     audio.currentTime = (manualChange / 100) * audio.duration;
     setProgress(manualChange);
   };
 
   const getVolumeIcon = () => {
-    if (volume === 0) return <VolumeX />;
-    if (volume < 0.5) return <Volume1 />;
-    return <Volume2 />;
+    if (volume === 0) return <VolumeX size={18} />;
+    if (volume < 0.5) return <Volume1 size={18} />;
+    return <Volume2 size={18} />;
   };
 
   return (
@@ -84,7 +99,8 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
       {isExpanded && (
         <button
           onClick={togglePlay}
-          className="hover:bg-gray-200 ps-2 rounded-full transition"
+          className="hover:bg-gray-200 pl-2 rounded-full transition"
+          aria-label={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? <Pause size={18} /> : <Play size={18} />}
         </button>
@@ -98,10 +114,11 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
               type="range"
               min="0"
               max="1"
-              step="0.1"
+              step="0.01"
               value={volume}
               onChange={handleVolumeChange}
               className="w-16 h-1 bg-gray-300 rounded-full appearance-none cursor-pointer"
+              aria-label="Volume"
             />
           </div>
 
@@ -113,16 +130,15 @@ const CompactMusicPlayer: React.FC<MusicPlayerProps> = ({ styling = "" }) => {
               value={progress}
               onChange={handleProgressChange}
               className="w-full h-1 bg-gray-300 rounded-full appearance-none cursor-pointer"
+              aria-label="Progress"
             />
           </div>
         </>
       )}
 
-      <Music
-        size={18}
-        className={cn({ hidden: isExpanded })}
-        onClick={togglePlay}
-      />
+      {!isExpanded && (
+        <Music size={18} className={cn("cursor-pointer")} onClick={togglePlay} />
+      )}
 
       <audio ref={audioRef} src={playlist[currentTrackIndex]} />
     </div>

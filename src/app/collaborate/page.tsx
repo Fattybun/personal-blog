@@ -1,4 +1,4 @@
-import Landing from "@/components/layout/landing";
+import Landing from "@/components/landing/Landing";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

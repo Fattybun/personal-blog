@@ -1,9 +1,16 @@
 import fetchAllPosts from "@/api/posts";
-import BlogCard from "./blog-card";
-import DynamicBreadcrumb from "./dynamic-breadcrumb";
+import BlogCard from "./BlogCard";
+import DynamicBreadcrumb from "../navigation/DynamicBreadcrumb";
 
+// Consider using Suspense in parent if needed for loading state
 const Blogs = async () => {
-  const posts = await fetchAllPosts();
+  let posts;
+  try {
+    posts = await fetchAllPosts();
+  } catch (error) {
+    console.error("Failed to fetch posts", error);
+    return <div>Error fetching posts.</div>;
+  }
 
   if (!Array.isArray(posts)) {
     return <div>No posts found</div>;

@@ -1,4 +1,4 @@
-import BlogDetail from "@/components/layout/detail";
+import BlogDetail from "@/components/blog/Detail";
 import fetchPost from "@/api/post_detail";
 import fetchAllPosts from "@/api/posts";
 import { Metadata } from "next";

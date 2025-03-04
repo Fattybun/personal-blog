@@ -7,14 +7,14 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import useScrolled from "@/hooks/use-scrolled";
 import { route } from "@/configs/route";
-import { ModeToggle } from "./theme-button";
+import { ModeToggle } from "../theme/ThemeButton";
 import Link from "next/link";
-import CompactMusicPlayer from "./music-button";
+import CompactMusicPlayer from "../music/MusicButton";
 import { usePathname } from "next/navigation";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
@@ -29,10 +29,14 @@ const MenuToggle = () => {
 
   const blogHeaderBackground = isNestedRoute("blog");
 
-  const routes = Object.entries(route).map(([key, label]) => ({
-    label,
-    url: key === "home" ? "/" : `/${label.toLowerCase()}`,
-  }));
+  const routes = useMemo(
+    () =>
+      Object.entries(route).map(([key, label]) => ({
+        label,
+        url: key === "home" ? "/" : `/${label.toLowerCase()}`,
+      })),
+    []
+  );
 
   return (
     <>
@@ -41,12 +45,10 @@ const MenuToggle = () => {
           <Button
             variant="ghost"
             className="md:hidden p-2"
-            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            onClick={() => setIsDrawerOpen(true)}
+            aria-label="Open navigation menu"
           >
-            <Menu
-              size={24}
-              className={cn(isScrolled ? "text-primary" : "text-white")}
-            />
+            <Menu size={24} className={cn(isScrolled ? "text-primary" : "text-white")} />
           </Button>
         </DrawerTrigger>
         <DrawerContent className="p-4 w-full">
@@ -54,14 +56,13 @@ const MenuToggle = () => {
           <DrawerTitle>
             <VisuallyHidden>Navigation Menu</VisuallyHidden>
           </DrawerTitle>
-
           <nav className="flex flex-col gap-4">
-            {routes.map((route, index) => (
+            {routes.map((route) => (
               <Button
+                key={route.url}
                 variant="ghost"
-                key={index}
                 asChild
-                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                onClick={() => setIsDrawerOpen(false)}
               >
                 <Link href={route.url}>{route.label}</Link>
               </Button>
@@ -79,7 +80,7 @@ const MenuToggle = () => {
         </DrawerContent>
       </Drawer>
 
-      {/* Keep music player outside the drawer to prevent unmounting */}
+      {/* 保持音乐播放器在 Drawer 外部以防止卸载 */}
       <div className="fixed bottom-4 right-6 z-50">
         <CompactMusicPlayer styling="py-2 shadow-md" />
       </div>

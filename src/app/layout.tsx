@@ -1,8 +1,8 @@
+import ProgressBarProvider from "@/lib/prograss-bar-provider";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import ProgressBarProvider from "@/lib/prograss-bar-provider";
-import { ThemeProvider } from "@/components/layout/theme-provider";
 
 export default function RootLayout({
   children,
@@ -11,6 +11,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Global metadata can be added here */}
+      </head>
       <body className="antialiased flex flex-col min-h-screen">
         <ProgressBarProvider>
           <ThemeProvider
@@ -20,9 +23,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-
             <main className="flex-1">{children}</main>
-
             <Footer />
           </ThemeProvider>
         </ProgressBarProvider>
