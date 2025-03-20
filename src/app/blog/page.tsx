@@ -21,10 +21,11 @@ const Blog = () => {
   return (
     <>
       <Landing
-        backgroundImage="/blog.png"
-        heading="Insights and Reflections"
+        backgroundImage='/blog.png'
+        heading='Insights and Reflections'
         description="Immerse yourself in a tapestry of ideas and insights, where I share the essence of my journey through technology, design, and life's broader horizons. Here, I delve into the trends and innovations that redefine creativity and offer reflections that inspire and provoke thought. Join me in exploring the stories that shape the digital world and the personal growth that fuels every step forward."
       />
+
       <Blogs />
     </>
   );

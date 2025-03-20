@@ -1,7 +1,7 @@
 export const route = {
   home: "Home",
   blog: "Blog",
-  // collaborate: "Collaborate",
+  collaborate: "Collaborate",
   about: "About",
 } as const;
 
